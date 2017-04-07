@@ -1,0 +1,49 @@
+/*body:after {
+background-color: white;
+padding:5px;
+content: url(img/kvasir.png);
+position: fixed;
+bottom: 2em;
+left: 2em;
+box-shadow: 5px 5px 10px #000; }*/
+
+.logo-kvasir {
+width:10vw;
+background-size: 100%;
+height:3.8vw;
+background-color: white;
+background-repeat: no-repeat;
+content:"";
+padding: 5px;
+background-origin: content-box;
+background-image: url(img/kvasir.png);
+position: fixed;
+bottom: 2em;
+left: 2em;
+z-index: 1;
+box-shadow: 5px 5px 10px #000; }
+
+.logo-ai {
+width:10vw;
+background-size: 100%;
+height:3.7vw;
+background-color: white;
+background-repeat: no-repeat;
+content:"";
+padding: 5px;
+background-origin: content-box;
+background-image: url(img/auto-intern.png);
+position: fixed;
+bottom: 2em;
+right: 2em;
+z-index: 1;
+box-shadow: 5px 5px 10px #000; }
+
+.copyright {
+	position:fixed;
+	color:white;
+	left: 50%;
+	z-index: 1;
+	transform: translateX(-50%);
+	bottom:15px;
+}

@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Talk_Amsterdam</title>
+
+		<link rel="stylesheet" href="../deps/reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="../deps/reveal.js/css/theme/black.css">
+		<link rel="stylesheet" href="../deps/ai-kvasir-theme/theme.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../deps/reveal.js/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="logo-kvasir"></div>
+		<div class="logo-ai"></div>
+		<div class="copyright">&copy; Odin Holmes</div>
+		<div class="reveal">
+			<div class="slides">
+				<section class="center logo" data-background-image="../img/bg/amsterdam.jpg">
+					<h3>
+						Type based metaprogramming<br>
+					</h3> <h1>
+						<span style="color:red;">
+						is not
+						</span> 
+						<br>
+						dead
+
+					</h1>
+
+						<br>
+					<h4>By Odin Holmes</h4>
+				</section>
+				<section data-background-image="../img/bg/storytime.jpg">
+					<h1 style="text-align:left;position:fixed;top:0;">A story of<br><span style="color:red;">rabbit</span><br>holes</h1>
+				</section>
+				<section class="center">
+					<img style="height:70vh" src="../img/modern-c++-design.jpg"></img>
+				</section>
+				<section class="center">
+					<img style="height:70vh" src="../img/tmp_that.jpg"></img>
+				</section>
+				<section class="center">
+					<img style="height:70vh" src="../img/yes-we-can.jpg"></img>
+				</section>
+				<section>
+					<h1>Replace if</h1>
+					<iframe class style="width:90vw; height:50vh; background-color:white;" data-src="../benchmarks/replace_if.html"></iframe>
+				</section>
+				<section>
+					<h3>Classic conditional</h3>
+					<iframe style="width:100vw; height:50vh;" src="https://godbolt.org/e#g:!((g:!((g:!((h:codeEditor,i:(j:1,source:'%23include+%3Ctype_traits%3E%0A%0Astruct+A%7B%7D%3B%0Astruct+B%7B%7D%3B%0Ausing+result1+%3D+typename+std::conditional%3Ctrue,A,B%3E::type%3B%0Ausing+result2+%3D+typename+std::conditional%3Cfalse,A,B%3E::type%3B%0A%0A'),l:'5',n:'0',o:'C%2B%2B+source+%231',t:'0')),k:61.357702349869456,l:'4',n:'0',o:'',s:0,t:'0'),(g:!((g:!((h:compiler,i:(compiler:clang380,filters:(b:'0',commentOnly:'0',directives:'0',intel:'0'),options:'-std%3Dc%2B%2B14',source:1),l:'5',n:'0',o:'x86-64+clang+3.8+(Editor+%231,+Compiler+%231)',t:'0')),k:49.07034195595195,l:'4',m:50,n:'0',o:'',s:0,t:'0'),(g:!((h:output,i:(compiler:1,editor:1),l:'5',n:'0',o:'%231+with+x86-64+clang+3.8',t:'0')),l:'4',m:50,n:'0',o:'',s:0,t:'0')),k:38.64229765013056,l:'3',n:'0',o:'',t:'0')),l:'2',n:'0',o:'',t:'0')),version:4"></iframe>
+				</section>
+				<section>
+					<h3>Selective alias pattern</h3>
+					<iframe style="width:100vw; height:50vh;" src="https://godbolt.org/e#g:!((g:!((g:!((h:codeEditor,i:(j:1,source:'template%3Cbool%3E%0Astruct+conditional%7B%0A%09template%3Ctypename+T,+typename+U%3E%0A%09using+f+%3D+T%3B%0A%7D%3B%0A%0Atemplate%3C%3E%0Astruct+conditional%3Cfalse%3E%7B%0A%09template%3Ctypename+T,+typename+U%3E%0A%09using+f+%3D+U%3B%0A%7D%3B%0A%0Astruct+A%7B%7D%3B%0Astruct+B%7B%7D%3B%0Ausing+result1+%3D+typename+conditional%3Ctrue%3E::template+f%3CA,B%3E%3B%0Ausing+result2+%3D+typename+conditional%3Cfalse%3E::template+f%3CA,B%3E%3B%0A%0A'),l:'5',n:'0',o:'C%2B%2B+source+%231',t:'0')),k:61.357702349869456,l:'4',n:'0',o:'',s:0,t:'0'),(g:!((g:!((h:compiler,i:(compiler:clang380,filters:(b:'0',commentOnly:'0',directives:'0',intel:'0'),options:'-std%3Dc%2B%2B14',source:1),l:'5',n:'0',o:'x86-64+clang+3.8+(Editor+%231,+Compiler+%231)',t:'0')),k:49.07034195595195,l:'4',m:50,n:'0',o:'',s:0,t:'0'),(g:!((h:output,i:(compiler:1,editor:1),l:'5',n:'0',o:'%231+with+x86-64+clang+3.8',t:'0')),l:'4',m:50,n:'0',o:'',s:0,t:'0')),k:38.64229765013056,l:'3',n:'0',o:'',t:'0')),l:'2',n:'0',o:'',t:'0')),version:4"></iframe>
+				</section>
+				<section>
+					<h3>Replace if</h3>
+					<iframe style="width:100vw; height:50vh;" src="https://godbolt.org/e#z:OYLghAFBqd5QCxAYwPYBMCmBRdBLAF1QCcAaPECAKxAEZSBnVAV2OUxAHIBSAJgGY8AO2QAbZlgDU3fgGECATwAOmAPoFiAQ0IMZ2bgAYAggUwBbJaM2mZsgEapUovYaMMNzZAUloh%2BAnioQprOAOwAQq6GAJymFlY2cooqwWaYkgAqpJLJmKnpAKouxjHMDMLAkgBm0vwAIpkykSWhdU1RxnGW1pi2xW4eXj5
+B/oHBznJVIQy9/PoRHbHm3YnyynmaaZnZufmSRXOLZRXVtQ0HzUbcre0lncsJs2spm%2BkASjsPPba7rwB0AL0PisDAYkgAYv13MRPN5iJhuuxVHgqqolPD0NdLjEuo8fus9hl%2BqVykJKjUZA1fltfKMgiFbJC5ES5iAQAA3ELMWbYNm4nrVWwfFn6fjYm5ijomL6ramYAF/KGDbyiPDuLHXNqSu7S%2BLfJIE16SD45GVPOUKoFiTSgiE7Q1pBUZXSHYzHMmSeGItQos6SVXqg0vLZeqxIlFojFC0hM3kgfmmQXMl3YS2HbVXe562UO9Ii1zuypq1Ts1B4dB%2B9zoNnFhivWxZUvllwZgukyrwhjMUTeSmehFhn1VWzCAjkBglsvochCMdN6fIBCaYgty6cACUpFEXAArJxSEIuAZ96guLI%2BJFeOFJExWOxpAJaPuCEeN5uANYgABstD%2B/B3oShAYAgACzRAAHF%2B0QgTuX5blwIH7oenDHqQp6cPuDAgAYpAvihG6kHAsAwIgKCoBYeCiJgZAUBAaAUVRxAoFYZL8OBOFVJRpjEFhEB2K%2BpD0Wks4APJCKICgCfg8JeHg7KYFh%2BEzqY274ZuqBKAEQSKQAtFWlLIBeF60IhjAsGwHC0Juql7geAnoQAHpBOlfiBwKaB6/B/OBkgQLghAkA%2B/D0JIsjkUolHUUFVnPq%2B64fiAYF/AYQH8CBtDRDuO6ZRlO7wZwplmCAO44chqHoZh2G4XFhEkRASAsAQSjMGOtH0RFjF0KQmD%2BCQdDWbuSH2VwfDBZIADuhAIJITlfi5bnWp53mxWpA0FfuRUlXZSkVYwVV4ce8WkJ%2BbF/K5vC8NEoRfiVtD8AYsH5fwQ07VwK2HWtvAveVb3VatpDyTxYyJUA"></iframe>
+				</section>
+				<section>
+					<h1>Cost of operations</h1>
+					<ul>
+						<li>test</li>
+						<li>tedasfdasfst</li>
+						<li>test</li>
+						<li>tessdft</li>
+						<li>tedfsdsfst</li>
+				</section>
+				<section>
+					<h1>Fold left</h1>
+					<iframe class style="width:90vw; height:50vh; background-color:white;" data-src="../benchmarks/fold_left.html"></iframe>
+				</section>
+				<section>
+					<h3>Recursive alias pattern</h3>
+					<iframe style="width:100vw; height:50vh;" src="https://godbolt.org/e#g:!((g:!((g:!((h:codeEditor,i:(j:1,source:'template%3Cunsigned,+template%3Ctypename...%3E+class+F%3E%0Astruct+fold_left_impl%3B%0Atemplate%3Ctemplate%3Ctypename...%3E+class+F%3E%0Astruct+fold_left_impl%3C0,F%3E%7B%0A%09template%3Ctypename+T%3E%0A%09using+f+%3D+T%3B%0A%7D%3B%0A%0Atemplate%3Ctemplate%3Ctypename...%3E+class+F%3E%0Astruct+fold_left_impl%3C1,F%3E%7B%0A%09template%3Ctypename+T,+typename+U,+typename...Ts%3E%0A%09using+f+%3D+typename+fold_left_impl%3C(sizeof...(Ts)%3E1%3F1:0),F%3E::template+f%3CF%3CT,U%3E,Ts...%3E%3B%0A%7D%3B%0A%0A%0Atemplate%3Ctemplate%3Ctypename...%3E+class+F,+typename+T,+typename...Ts%3E%0Ausing+fold_left+%3D+typename+fold_left_impl%3C(sizeof...(Ts)%3E0%3F1:0),F%3E::template+f%3CT,Ts...%3E%3B%0A'),l:'5',n:'0',o:'C%2B%2B+source+%231',t:'0')),k:61.357702349869456,l:'4',n:'0',o:'',s:0,t:'0'),(g:!((g:!((h:compiler,i:(compiler:clang380,filters:(b:'0',commentOnly:'0',directives:'0',intel:'0'),options:'-std%3Dc%2B%2B14',source:1),l:'5',n:'0',o:'x86-64+clang+3.8+(Editor+%231,+Compiler+%231)',t:'0')),k:49.07034195595195,l:'4',m:50,n:'0',o:'',s:0,t:'0'),(g:!((h:output,i:(compiler:1,editor:1),l:'5',n:'0',o:'%231+with+x86-64+clang+3.8',t:'0')),l:'4',m:50,n:'0',o:'',s:0,t:'0')),k:38.64229765013056,l:'3',n:'0',o:'',t:'0')),l:'2',n:'0',o:'',t:'0')),version:4"></iframe>
+				</section>
+				<section>
+					<h3>Fasttracking</h3>
+					<iframe style="width:100vw; height:50vh;" src="https://godbolt.org/e#z:OYLghAFBqd5QCxAYwPYBMCmBRdBLAF1QCcAaPECAKxAEZSBnVAV2OUxAHIDMBbABwA2AQx4BSAMwBhZgDsGeYLMzpSAah4CR46QQCe/TLOG9MAOguTsa5CIYM1AMStiADAEEGBYs2QE1AGaogugA%2BoKYAQSheFqSAEJu7ppCopiSUina6boGRibmlhLWtsL2Ti4eXj5%2BgcFhEVExcdKupM7FYgDsiR5uAJxZaRn6hsamagAqle4DzAqywIFqkgAiUwlJ3aubfR5DOpl8qYej%2BaYWZlY2dg4d2EnVvv5BIeGR0bFCGfT33b2zVyDY7ZEZ5caYKbqM4QtQAVWh4IKl0mDBmcwWSwCKwk6xhBTqb0anxaUggCgAXphUAFLhBUQBKKyuSSOWggVwM9pWEAgA6QgIZDpSSakOFWUioy4uCQA7a7QHJEHDXTK05Ii5FEq3CqdKreZ6EhofZrfaQAJm5nR6WyB/LBYwJkzaGg1kMm9Fdjomk0tXvO7okiO97oALMGA1MAKwR2GTABssadXSTPoAHKn3f1M1NaC78ZqzKj0UD5nhFss1v7Ya9jU0voIMuS8FSaXTGczWZTqbSLPSGEzOri86zzXQOVz7rz%2BYEhXPpMLF/OpEuF8vnZLaBLfduJNvQ9uo9v49uutu09v%2BtuR8VJQxpUO5V0drLbYr7aqtCrMm6H9qyncOaitWyIWMWeruGWFa1u8UQ4nibpGrBJJmmS3Ztn2HbFCyEiOOhvZmP2g4PMOOGOGO7Kcla2DTmqAoZKKUpagqSQflI5b%2BAAkjMTy1BxoT/La/ReKIeDIDYqDyDwAAe/DEGoHFqAAbsIgjMJCVbca%2BfTPix%2Bx0Q6kbAQWkLihBUFLMI6DoPBCmyNETaTLyKlqRp5rxPCzmqepxF6ZBmJqAwzC8LZMHEhkVmqPxPwStF0h7redkOdIZ6JXFUhHkOJEApwXKCFwUacKQshcK4RWoFwUhiO51UeUwrDsCs5oSLQRUEKVuVcgA1iA8a0GYEhRl0XSuM1ob9Gm8b9KGUaJvlnChkVJWcGVpAVZwRUMBypDtStuWkHAsAwIgKCoAIeARGQFAQGg52XSgIiLBIaZtAEF08MQW0QAARh1pC3aY9kAPKyIIeh/fgxCYH4eBKZgW17eQ9mYPNZVcqg/AEHgkkIwAtF46BrMgtW1bQi2MCwbAcLQeUFUtf3rdJk24/GoY3MIFYSGYaZqBAuCECQTUteoUhnfwF2YPJ1UtQybUdQy3UgONZiuCNEihrQ/RRlGWuazG83k7wIBRm0y2retm3bbtaMHcdEBICwBD8MwBDkJQt3i/d9AqALxB0LTnCFcVDNcNLtBqAA7oQCBqEz8Ys2zpSc9zct7QrpAG0VRsm8HiMW4wVvy4rz1mKz5rmv0XTxibtASK4s0Z1wEj03nXCp2jAfmi35ttztRekHDn3YyVoZAA"></iframe>
+				</section>
+				<section>
+					<h3>Continuations</h3>
+					<iframe style="width:100vw; height:50vh;" src="https://godbolt.org/e#z:OYLghAFBqd5QCxAYwPYBMCmBRdBLAF1QCcAaPECAKxAEZSBnVAV2OUxAHIBSAJgGY8AO2QAbZlgDU3fgGECATwAOmAPoFiAQ0IMZ2bgAYAggUwBbJaM2mZsgEapUovYaMMNzZAUloh%2BAnioQprOAOwAQpKmFlY2cooqwWaYkgAqpFHKmEkpAKp6kswMwsCSAGbS/AAiaTKR3KFVda7RltaYtgWu7sSe3r7%2BgcHOcmUhDB38%2BhFR5m1x8lk5aRkJ2ZrJkvlThcVCpRUyNdv1jc3GrbGTi4kbmAB0jwU9fZKieO4N4Q1N/N/GLTmV1sa2WACVVkD2iClndHvcCmJNAwGJIAGIuYwvLySYiYNrsVR4MqqJR49BfVyGACcl2h8Vhm1SBSKJXKlRqoLuPiCgyCIVsGLkzKmIBAADcQsxJtgxXTTOVbBCRfo/lSzmqARcoQtmEJisAhJh0JCYvSbutkvDEVYUejMW4PDiyk50KpRJgygQiTFziYddd5YHGQ8njskXahfosU7vC7RG6PV6fZZbAZSFHKVraQGYbcmQ6aaz9uyjrVNUYfn7AWaFkG85bQwjw7bUZmY71na73Z7vXhfXJ6JmIlSDDna8H8yl0pkp1tViH4aldFNR9TiwcObPG%2BVu0m%2BwPZBBigAvTCoMrwiDLgCUegMMjRtBABhvGb0coDirkQtk6W22CkMu1qrhWVZgdqE4grmDJTiB2A%2BK29qrh2rzxomvYpiMsi8O%2Bq4jtm9awTuqTptuyypPQ5HcqkuHUUy/ALnOqQACxMSRACsGRrjSXJMgAbOxFGhEJNEAByiUy1KSdOtBkXxTbLoWY4bqW1T0Sk6E9sm/apnIx54GeF5Xre96Pqe56Xo814MHeoFVHJj68HQL5vlGn4TtI2Y0mUgp%2BT%2B/myL%2BwWBSFwrppRehAbwUWpPwsUsbFHGxfxsWhLFYmxdSsWOVMQEMPB1Yav8laQfM1zCN4ACSDrYt4lWqFmpXUu41h4MgPL6qYAAeZKSJVkiSuIKRljVYHFaORgAPQzbNc3zQti1LctK2rWtM2TURFoUQ6qkfKo4qoHg6Bbu46BivtDB3LY6SHcdLgQf6UHERRMlbLteylJo6AnWWDW2NeYpDdK0i8JEuRA1KmB2aqJU1uV0HPdtcJhghEZtm9M4KUuK7RkYqlafuW4KbuCbaQeelHhZxnWaZUwPvwaLU1Z9w2TDRy5WiznPq%2BeGyiAQbfn%2B%2BWFY9W0kxCsxI9jqOIciGMaTjH1sniBJqMSW7vJ8L3cqrViEsSpLkkqfMeeVQtKVMotw8Yql4gwzCiN4ZZ65oBu%2BXI/1yAzgH7XdJpe7ItBRYH8V5YNR0mv1QjerY6Xh4HyWgbDriqQ7ZhboTva2N9Acx41g4h/nthh4B0ex3I8dl4nD0p1qpUN5NTf183RicG%2BohcBxnCkEIXAGD3qBcLIfDfGDkhMKw7Cg/wtA9wQ/ft2%2BADWID8bQ9z8BxoShAYAgsdSYn8dSLEcYJnecCxPd95wA%2BkEPnA9wwL6kAvt/t6QcCwDAiAoKgFh4A9GQCgEA0AAKASgKw%2Bx%2BBiXTGUQBphiDPwgHYRepAwHJBjgAeSEKIBQaD8B4i8HgcUmBn7v3IDHTAF8B5vlQEoAIQRyEAFozpHGQKPUetAr6MBYGwDgtAO5d2vmgh%2B3Uj7MP4ixOWJZ%2BD3DEpICAuBCAkBnlRWQ/8lCAMwMQNRN556LxvCvEAB97gGF3vwFitBqQcQ4jY6xXEL48LMCADi6Yb53wfk/F%2Bb9aGfx/hAJALACBKGYAQcglAwFaIgfQY0KjiB0CEZwbuvdRFcD4LPSQAB3QgCBJDiP4pI6RSJZHyIMe/IxpAnE9xcW41JFCvGMB8YY4xMD7hSN4LwakoR%2BJuNoPwAwZ8qlcH4CIhpXBym0KSbwMZniJmvxaaQUhSChgmKAA%3D%3D"></iframe>
+				</section>
+				<section>
+					<h3>Higher order metafunctions</h3>
+					<iframe style="width:100vw; height:50vh;" src="https://godbolt.org/e#z:OYLghAFBqd5QCxAYwPYBMCmBRdBLAF1QCcAaPECAKxAEZSBnVAV2OUxAHIBSABgEE%2B/AHYBDALaYGAB1HsA1OOkAbedwDMAEXkAjVKgYEQIJco0AhIUIIBPaZiwAzRSuMA3TMiLEA%2Bsg0AwnjCBKTy9OFhtBrY8h7I0eqWArb2Ti7K7p7efoHBofIATGHFRTFxnoUW1nYOmM6mWV4kuepBIWHqnZ3l8erVKbXpjSDx3oHxEfGlfb3xA4KDafXyqZhikhnGyhI66KKBQvLHJ8cjjqjK6IcCp3cnIz4RR/d3I/k%2BgbwxYS%2BvJ2sNpgtiAduI9gc2n9/m9XCAVMwGDd%2BDDUSCnr9bmj/o8qljscdytD/jFjGtiScYtDSSA1vIwQsastnICJMDzpdrlD8Xc3PFMSjXu8Qp82t91NgBTi4QikdzBajHs8edLMvDiKgCNlkQSTgyVa8aWtjKJpCobDrdei8QqYUSDYSJdSJWTavJiFJmMoCIyBIZRAQ8MgfKIGAxMMQCBARpgAI7MUTKHxEQIehhegrCgiigK0AAcVJdo0TzEwv0KhQYCBYV10wPz3ArAEpfYt%2BAB6Ttd7s93t9/sDwdD4ddqwCRHBYDyIEyOTAgDWblDeGIxlMrYnwinyloai09LwhjyIsCiUl8g%2Bp5%2BF5PbTPheS/E328Ke%2B0ykPPral7aVQlYR/AI/3PQDgIfIRn3pdQ3wPI9v1vAJ%2Bn/G9s0CJCQIQ9DwIECCGEnd1PW9GDkETMx5VOC4rh8ZR6i/AIKWOC5iHnS1UVlQ5kLUXgAE4%2BG4zs0HBYIIwYu48CwEJCBsTFeJ4ztpA9AhbEUZhkAQVYEGBBg2XkUN0VE05mGEWRkBY7lZIszthFQadMAceQmPRMI0Ek4QE0DVBhAYeQqERAh5AAdxIFiHRhSj0Go2jWKtY52KhJ1QpJBLbSS7BRKpHkfmhQDxXPHcwmUUplCwpIx34f1A2DUNw0jCA0wzdwS2BDRNBa8I83LStqy9dA63axtChbUqcJGtsyvG0ays4JtSEyTgAFZOFIYQuF4JbUC4ejCksbb5CYVgFEbdRaCWoxODWpsZvnEAADZaAAOnUeaAHZnt4Qp1AAFm4vMbu4z75pu2auE%2BpaVvO9auCWhgQF4Ugzou0g4FgGBEBQVAlDwGiyAoCBBOkLGIxQHYt3UPM4ccLGtWIGGIB0ValsEyQQgAeWEZQbAZ0h8A9Lw8A8GGIfIEJMDmxHUGkDyvK4ABaQwuU0fxtsbcxaFBxgWDYDhaBmubFuWrmNs4AAPX6ZZuz75GQEmp3Ue683kCBcEIEg1A%2BiIAgxgnsbd46m1OhnLtIa7vvu3g3q%2B2huPm%2Bbo6j%2Bbgc4dXxBAea4fBtbSCN6HYfhwOkdRiAkBYAhpGYUJcfxwnV3oBwXZr3WuH1jPIZ4d3AsIdTTZu83Let0Qt3kO28wDiGg7m5PU/Tw2ocYXOEemq6QDJ%2B6LYrbjnputPaHUXhAcT9QwZnzhR4uxvOEKI%2BhezvOx5mjwabwTyQE%2BoA"></iframe>
+				</section>
+				<section class="logo" data-background-image="../img/bg/a-new-road.jpg">
+					<h1 style="font-size:200px;color:red;">Take-away</h1>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="../deps/reveal.js/lib/js/head.min.js"></script>
+		<script src="../deps/reveal.js/js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				width:1920,
+				height:1080,
+				history: true,
+				touch: false,
+				center: false,
+				controls: false,
+				slideNumber: false,
+				transition: 'fade',
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: '../deps/reveal.js/plugin/markdown/marked.js' },
+					{ src: '../deps/reveal.js/plugin/markdown/markdown.js' },
+					{ src: '../deps/reveal.js/plugin/notes/notes.js', async: true },
+					{ src: '../deps/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
